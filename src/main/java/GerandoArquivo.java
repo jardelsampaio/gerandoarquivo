@@ -1,16 +1,24 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class GerandoArquivo {
 
-    public static void main(String[] args) {
-        System.out.println("Cadastro de Pessoa");
-        Scanner insira = new Scanner(System.in);
-        System.out.println("Digite o nome da Pessoa: ");
-        String nome = insira.next();
+    public static void main(String[] args) throws IOException {
 
-        Pessoa geo = new Pessoa(nome);
-        System.out.println(geo.getNome());
+        Path path = Path.of("D:\\Gerando_TXT_Java\\teste.txt");
 
+        if(Files.notExists(path)) {
+            Files.createFile(path);
+
+        }
+
+        String texto = "Oi, JP. Tudo bem?";
+
+        Files.writeString(path, texto);
+
+        //Files.delete(path);
     }
 
 }
