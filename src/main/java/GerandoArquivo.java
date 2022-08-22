@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.List;
 import java.util.Scanner;
 
 public class GerandoArquivo {
@@ -15,10 +17,18 @@ public class GerandoArquivo {
         }
 
         String texto = "Oi, JP. Tudo bem?";
+        String texto1 = "\nTeste Geosales";
+
 
         Files.writeString(path, texto);
+        Files.writeString(path, texto1, StandardOpenOption.APPEND);
 
-        //Files.delete(path);
+
+        List<String> strings = Files.readAllLines(path);
+
+        for(String teste: strings) {
+            System.out.println(teste);
+        }//Files.delete(path);
     }
 
 }
